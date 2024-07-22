@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>IBAROH</title>
+    <style>
+        body, html {
+    height: 100%;
+   
+}
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .menu {
+            position: fixed;
+            top: 7px;
+            right: 10px;
+            z-index: 1000;
+        }
+        .hamburger {
+            display: inline-block;
+            cursor: pointer;
+        }
+        .hamburger div {
+            width: 35px;
+            height: 5px;
+            background-color: #333;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+        .page {
+            display: none;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        .active {
+            display: block;
+        }
+        .menu-items {
+            visibility: hidden;
+            opacity: 0;
+            position: fixed;
+            top: 50px;
+            right: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            width: 150px;
+            transition: visibility 0s, opacity 0.5s ease;
+        }
+        .menu-items.show {
+            visibility: visible;
+            opacity: 1;
+        }
+        .menu-items button {
+            display: block;
+            width: 100%;
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            color: #333;
+            border-bottom: 1px solid #ddd;
+        }
+        .menu-items button:hover {
+            background-color: #f0f0f0;
+        }
+        .tombolinput{
+  top: 7px;
+  left: 0px;
+  width: 1px;
+  height: 39px;
+  background-color: #3080f7;
+  color: fff;
+  border: none;
+  cursor: pointer;
+  position: fixed;
+}
+.chat-form-container {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #f1f1f1;
+  padding: 20px;
+  box-sizing: border-box;
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+ .chat-message:last-child {
+      margin-bottom: 0;
+    }
+
+    .chat-form {
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      
+    }
+
+   /* Form Input Fields */
+.chat-input1,
+.chat-input2,
+.chat-input3,
+.chat-input4 {
+  border: 2px solid #ddd;
+  outline: none;
+  resize: none;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 5px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  font-family: sans-serif; /* Default font family */
+}
+
+.chat-input1 {
+  height: 36px;
+}
+
+.chat-input2,
+.chat-input3,
+.chat-input4 {
+  height: 150px;
+}
+
+.chat-input1:focus,
+.chat-input2:focus,
+.chat-input3:focus,
+.chat-input4:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.chat-input2 {
+  direction: rtl;
+  font-family: 'CustomArabicFont', 'Traditional Arabic', Tahoma, sans-serif;
+}
+
+/* Submit Button Styling */
+.kirim {
+  background-color: #3080f7;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s;
+  font-size: 16px;
+  font-family: sans-serif; /* Ensure button uses sans-serif */
+}
+
+.kirim:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.kirim:active {
+  background-color: #004099;
+  transform: translateY(0);
+}
+
+    .kirim:hover {
+      background-color: red;
+    }
+  .container {
+    display: block;
+    cursor: pointer;
+    float: right;
+  }
+  
+  .bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: black;
+    margin: 6px 0;
+    transition: 0.4s;
+  }
+  
+  .change .bar1 {
+    transform: translate(0, 11px) rotate(-45deg);
+  }
+  
+  .change .bar2 {opacity: 0;}
+
+.change .bar3 {
+    transform: translate(0, -11px) rotate(45deg);
+}
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.openbtn:hover {
+    background-color:#444;
+}
+.search-box {
+    width: 300px;
+    display: flex;
+    margin: 0 auto;
+    position: fixed;
+    right: 30px;
+    margin-top:-22px;
+}
+
+input[type="text"] {
+    width: 75%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+}
+.arabin {
+    width: 75%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+    direction: rtl;
+}
+button {
+    width: 20%;
+    padding: 10px;
+    background-color: #3080f7;
+    color: #fff;
+    border: 1px solid #6657da;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #ff0000;
+}
+@media screen and (max-width: 600px) {
+    .search-box {
+        width: 85%;
+    }
+}
+
+@font-face {
+  font-family: 'CustomArabicFont';
+  src: url('arabic-font.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal; }
+
+.rtl, .indonesia {
+  text-align: justify;
+  font-size: 20px;
+}
+
+.rtl {
+  direction: rtl;
+  font-family: 'CustomArabicFont', 'Traditional Arabic', Tahoma, sans-serif;
+}
+
+.TABEL {
+  width: 100%;
+  margin: 0px;
+  overflow: hidden;
+}
+
+#dataTable1 tbody tr:first-child,
+#dataTable2 tbody tr:first-child,
+#dataTable3 tbody tr:first-child,
+#dataTable4 tbody tr:first-child,
+#dataTable5 tbody tr:first-child {
+  display: none; /* Hide the first row */
+    }
+
+/* CSS untuk tabel pertama */
+#dataTable1 {
+  width: 100%;
+  border-collapse: collapse;
+  max-width: 100%;
+  margin-top: 25px;
+}
+#dataTable1 tr:last-child td {
+  border-radius: 5px;
+}
+
+#dataTable1 tr:first-child td {
+  border-radius: 5px;
+  background-color: black;
+  color: #ffffff;
+}
+
+#dataTable1 th,
+#dataTable1 td {
+  display: block;
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-top: -1px;
+  margin-bottom: 5px;
+  color: black;
+}
+
+#dataTable1 th:nth-child(1),
+#dataTable1 td:nth-child(1) {
+  width: auto;
+  float: center;
+  background-color: #3080f7;
+  color: #ffffff;
+}
+
+#dataTable1 th:nth-child(2),
+#dataTable1 td:nth-child(2) {
+  width: auto;
+  float: center;
+  background-color: #ecf8fb;
+  color: #000b41;
+}
+
+#dataTable1 th:nth-child(3),
+#dataTable1 td:nth-child(3) {
+  width: auto;
+  float: center;
+  background-color: #fffff0;
+  color: #000b41;
+  font-size: 10px;
+}
+
+#dataTable1 td.rtl {
+  direction: rtl;
+}
+
+#dataTable1 td.indonesia {
+  direction: ltr;
+}
+
+/* CSS untuk tabel kedua */
+#dataTable2 {
+  width: 100%;
+  border-collapse: collapse;
+  max-width: 100%;
+  margin-top: 25px;
+}
+
+#dataTable2 th,
+#dataTable2 td {
+  display: block;
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-top: -1px;
+  margin-bottom: 5px;
+  color: black;
+}
+
+
+#dataTable2 th:nth-child(1),
+#dataTable2 td:nth-child(1) {
+  width: auto;
+  float: center;
+  background-color: #ecf8fb;
+  color: #000b41;
+}
+
+#dataTable2 th:nth-child(2),
+#dataTable2 td:nth-child(2) {
+  width: auto;
+  float: center;
+  background-color: #fffff0;
+  color: #000b41;
+}
+
+#dataTable2 tr:last-child td {
+  border-radius: 5px;
+}
+
+#dataTable2 tr:first-child td {
+  border-radius: 5px;
+  background-color: black;
+  color: #ffffff;
+}
+
+#dataTable2 td.rtl {
+  direction: rtl;
+}
+
+#dataTable2 td.indonesia {
+  direction: ltr;
+}
+
+
+/* CSS untuk tabel ketiga */
+#dataTable3 {
+  width: 100%;
+  border-collapse: collapse;
+  max-width: 100%;
+  margin-top: 25px;
+}
+
+#dataTable3 th,
+#dataTable3 td {
+  display: block;
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-top: -1px;
+  margin-bottom: 5px;
+  color: black;
+}
+
+
+#dataTable3 th:nth-child(1),
+#dataTable3 td:nth-child(1) {
+  width: auto;
+  float: center;
+  background-color: #ecf8fb;
+  color: #000b41;
+}
+
+#dataTable3 th:nth-child(2),
+#dataTable3 td:nth-child(2) {
+  width: auto;
+  float: center;
+  background-color: #fffff0;
+  color: #000b41;
+}
+
+#dataTable3 tr:last-child td {
+  border-radius: 5px;
+}
+
+#dataTable3 tr:first-child td {
+  border-radius: 5px;
+  background-color: black;
+  color: #ffffff;
+}
+
+#dataTable3 td.rtl {
+  direction: rtl;
+}
+
+#dataTable3 td.indonesia {
+  direction: ltr;
+}
+
+/* CSS untuk tabel keempat */
+#dataTable4 {
+  width: 100%;
+  border-collapse: collapse;
+  max-width: 100%;
+  margin-top: 25px;
+}
+
+#dataTable4 th,
+#dataTable4 td {
+  display: block;
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-top: -1px;
+  margin-bottom: 5px;
+  color: black;
+}
+
+
+#dataTable4 th:nth-child(1),
+#dataTable4 td:nth-child(1) {
+  width: auto;
+  float: center;
+  background-color: #ecf8fb;
+  color: #000b41;
+}
+
+#dataTable4 th:nth-child(2),
+#dataTable4 td:nth-child(2) {
+  width: auto;
+  float: center;
+  background-color: #fffff0;
+  color: #000b41;
+}
+
+#dataTable4 tr:last-child td {
+  border-radius: 5px;
+}
+
+#dataTable4 tr:first-child td {
+  border-radius: 5px;
+  background-color: black;
+  color: #ffffff;
+}
+
+#dataTable4 td.rtl {
+  direction: rtl;
+}
+
+#dataTable4 td.indonesia {
+  direction: ltr;
+}
+
+/* CSS untuk tabel kelima */
+#dataTable5 {
+  width: 100%;
+  border-collapse: collapse;
+  max-width: 100%;
+  margin-top: 25px;
+}
+
+#dataTable5 th,
+#dataTable5 td {
+  display: block;
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-top: -1px;
+  margin-bottom: 5px;
+  color: black;
+}
+
+
+#dataTable5 th:nth-child(1),
+#dataTable5 td:nth-child(1) {
+  width: auto;
+  float: center;
+  background-color: #ecf8fb;
+  color: #000b41;
+}
+
+#dataTable5 th:nth-child(2),
+#dataTable5 td:nth-child(2) {
+  width: auto;
+  float: center;
+  background-color: #fffff0;
+  color: #000b41;
+}
+
+#dataTable5 tr:last-child td {
+  border-radius: 5px;
+}
+
+#dataTable5 tr:first-child td {
+  border-radius: 5px;
+  background-color: black;
+  color: #ffffff;
+}
+
+#dataTable5 td.rtl {
+  direction: rtl;
+}
+
+#dataTable5 td.indonesia {
+  direction: ltr;
+}
+
+.underline-text {
+color:#ff1a1a;
+}
+.center-text {
+    display:block;
+    margin-bottom: -20px;
+    text-align: center;
+    }
+.quote-text {
+    display: block;
+    text-align: left;
+    margin-bottom: -20px;
+    font-family: "Lato", sans-serif;
+}
+.bold {
+  font-weight: bold;
+}
+#dataTable tbody tr:first-child {
+  display: none;
+}
+.highlight {
+  background-color: rgb(255, 0, 0);
+}
+
+/* CSS untuk menyembunyikan sel dan menghilangkan latar belakang */
+.hidden-cell {
+    display: none;
+  }
+
+  /* CSS untuk mengatur latar belakang sel yang transparan */
+  .transparent-bg {
+    background-color: transparent;
+  }
+
+  .red-text {
+  color: red;
+}
+
+.highlight {
+  background-color: yellow;  /* Misalnya, latar belakang kuning untuk penyorotan */
+}
+
+#searchResult1,
+#searchResult2,
+#searchResult3,
+#searchResult4,
+#searchResult5 {
+  display: none;
+}
+
+    </style>
+</head>
+<body>
+
+  <div class="menu">
+    <div class="container" onclick="toggleMenu(this)">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+    </div>
+    <div class="menu-items" id="menuItems">
+        <button class="nav-button" onclick="showPage('halaman1')">IBAROH</button>
+        <button class="nav-button" onclick="showPage('halaman2')">RUMUSAN</button>
+        <button class="nav-button" onclick="showPage('halaman3')">FATHUL QORIB</button>
+        <button class="nav-button" onclick="showPage('halaman4')">ALFIYAH</button>
+        <button class="nav-button" onclick="showPage('halaman5')">KAIDAH FIQIH</button>
+        <button class="nav-button" onclick="location.reload()">REFRES</button>
+    </div>
+</div>
+
+<script>
+    function toggleMenu(x) {
+        x.classList.toggle("change");
+        var menuItems = document.getElementById('menuItems');
+        menuItems.classList.toggle('show');
+    }
+
+    function showPage(pageId) {
+        // Menyembunyikan semua halaman
+        document.querySelectorAll('.page').forEach(page => {
+            page.classList.remove('active');
+        });
+        // Menampilkan halaman yang dipilih
+        document.getElementById(pageId).classList.add('active');
+        // Menutup menu setelah memilih halaman
+        document.getElementById('menuItems').classList.remove('show');
+        document.querySelector('.container').classList.remove('change');
+    }
+</script>
+
+    <div id="halaman1" class="page active">
+        <!-- Pencarian dan tabel pertama -->
+<div class="search-container">
+  <form action="#" method="GET" class="search-box" id="searchBox1">
+    <input type="text" id="searchInput1" placeholder="" required>
+    <button class="search-button" type="submit">Cari</button>
+  </form>
+</div>
+<span id="searchResult1"></span>
+          <div class="chat-container">
+            <!-- Tabel Fathul Qorib -->
+            <div class="chat-body" id="chatBody1">
+              <div class="TABEL">
+                <table id="dataTable1">
+                  <tbody>
+                    <tr>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            </div>
+        <!-- Form pertama -->
+<button class="tombolinput" id="toggleFormBtn1"></button>
+<div id="popupFormContainer1" class="chat-form-container" style="display:none;">
+  <form name="chattdata1" id="chatForm1" class="chat-form" method="post" action="">
+    <textarea name="JUDUL" id="judulInput1" class="chat-input1" placeholder="Judul" required></textarea>
+    <textarea name="IBAROH" id="ibaroInput1" class="chat-input2" placeholder="الصق التعبير هنا ..." required></textarea>
+    <textarea name="KETERANGAN" id="keteranganInput1" class="chat-input3" placeholder="Keterangan..."></textarea>
+    <input class="kirim" type="submit" value="INPUT">
+  </form>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const toggleFormBtn1 = document.getElementById('toggleFormBtn1');
+    const popupFormContainer1 = document.getElementById('popupFormContainer1');
+    const form1 = document.forms['chattdata1'];
+    const judulInput1 = document.getElementById('judulInput1');
+    const ibaroInput1 = document.getElementById('ibaroInput1');
+    const keteranganInput1 = document.getElementById('keteranganInput1');
+
+    toggleFormBtn1.addEventListener('click', () => {
+      popupFormContainer1.style.display = (popupFormContainer1.style.display === 'none' || popupFormContainer1.style.display === '') ? 'block' : 'none';
+      form1.reset();
+    });
+
+    form1.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const isArabic = /[\u0600-\u06FF]/.test(ibaroInput1.value);
+      ibaroInput1.style.direction = isArabic ? 'rtl' : 'ltr';
+
+      const formData = new FormData(form1);
+      for (let [key, value] of formData.entries()) {
+        formData.set(key, value.replace(/<br>/g, '\n'));
+      }
+
+      fetch('https://script.google.com/macros/s/AKfycbymSGhIvdD3GEsnvEk-6FPnB4AaHyCLukmabtSHVFJL6obt5xkxvpC1FsFAzbCRk8p4YA/exec', {
+        method: 'POST',
+        body: formData,
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('chattdata1 Success!', data);
+        form1.reset();
+      })
+      .catch(error => console.error('chattdata1 Error!', error.message));
+
+      popupFormContainer1.style.display = 'none';
+      form1.reset();
+    });
+  });
+</script>
+
+    </div>
+
+    <div id="halaman2" class="page">
+        <!-- Pencarian dan tabel kedua -->
+<div class="search-container">
+  <form action="#" method="GET" class="search-box" id="searchBox2">
+    <input type="text" id="searchInput2" placeholder="" required>
+    <button class="search-button" type="submit">Cari</button>
+  </form>
+</div>
+<span id="searchResult2"></span>
+
+          
+             <!-- Tabel Kedua -->
+  <div class="chat-body" id="chatBody2">
+    <div class="TABEL">
+      <table id="dataTable2">
+        <tbody>
+          <tr>
+            <th></th>
+            <th></th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+ 
+           <!-- Form kedua -->
+           <button class="tombolinput" id="toggleFormBtn2"></button>
+           <div id="popupFormContainer2" class="chat-form-container">
+               <form name="chattdata2" id="chatForm2" class="chat-form" method="post" action="">
+                   <textarea name="SOAL" id="soalInput2" class="chat-input4" placeholder="Soal"></textarea>
+                   <textarea name="TABIR" id="tabirInput2" class="chat-input2" placeholder="الصق التعبير هنا ..."></textarea>
+                   <input class="kirim" type="submit" value="INPUT">
+               </form>
+           </div>
+          </div>
+           <script>
+               document.addEventListener('DOMContentLoaded', function () {
+                   const toggleFormBtn2 = document.getElementById('toggleFormBtn2');
+                   const popupFormContainer2 = document.getElementById('popupFormContainer2');
+                   const form2 = document.forms['chattdata2'];
+                   const tabirInput2 = document.getElementById('tabirInput2');
+       
+                   toggleFormBtn2.addEventListener('click', () => {
+                       popupFormContainer2.style.display = (popupFormContainer2.style.display === 'none' || popupFormContainer2.style.display === '') ? 'block' : 'none';
+                       form2.reset();
+                   });
+       
+                   form2.addEventListener('submit', e => {
+                       e.preventDefault();
+       
+                       const isArabic = /[\u0600-\u06FF]/.test(tabirInput2.value);
+                       tabirInput2.style.direction = isArabic ? 'rtl' : 'ltr';
+       
+                       const formData = new FormData(form2);
+                       for (let [key, value] of formData.entries()) {
+                           formData.set(key, value.replace(/<br>/g, '\n'));
+                       }
+       
+                       fetch('https://script.google.com/macros/s/AKfycbwilpBTWCZOcfCEAv2g1jGNdAmb1pAwGC94sTC-sBTCoSTWDdA9YHMAfqPqi6YjIbS4xg/exec', {
+                           method: 'POST',
+                           body: formData,
+                       })
+                       .then(response => response.json())
+                       .then(data => {
+                           console.log('chattdata2 Success!', data);
+                           form2.reset();
+                       })
+                       .catch(error => console.error('chattdata2 Error!', error.message));
+       
+                       popupFormContainer2.style.display = 'none';
+                       form2.reset();
+                   });
+               });
+           </script>
+
+<div id="halaman3" class="page">
+  <!-- Pencarian dan tabel ketiga -->
+<div class="search-container">
+<form action="#" method="GET" class="search-box" id="searchBox3">
+<input type="text" id="searchInput3" placeholder="" required>
+<button class="search-button" type="submit">Cari</button>
+</form>
+</div>
+<span id="searchResult3"></span>
+<!-- Tabel ketiga -->
+<div class="chat-container">
+<div class="chat-body" id="chatBody3">
+<div class="TABEL">
+<table id="dataTable3">
+  <tbody>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Form ketiga -->
+<button class="tombolinput" id="toggleFormBtn3"></button>
+<div id="popupFormContainer3" class="chat-form-container" style="display:none;">
+<form name="chattdata3" id="chatForm3" class="chat-form" method="post" action="">
+<textarea name="MAQRO" id="ibaroInput3" class="chat-input2" placeholder="الصق التعبير هنا ..." required></textarea>
+<textarea name="MUROD" id="keteranganInput3" class="chat-input3" placeholder="Murod..." required></textarea>
+<input class="kirim" type="submit" value="INPUT">
+</form>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+const toggleFormBtn3 = document.getElementById('toggleFormBtn3');
+const popupFormContainer3 = document.getElementById('popupFormContainer3');
+const form3 = document.forms['chattdata3'];
+const judulInput3 = document.getElementById('judulInput3');
+const ibaroInput3 = document.getElementById('ibaroInput3');
+const keteranganInput3 = document.getElementById('keteranganInput3');
+
+toggleFormBtn3.addEventListener('click', () => {
+popupFormContainer3.style.display = (popupFormContainer3.style.display === 'none' || popupFormContainer3.style.display === '') ? 'block' : 'none';
+form3.reset();
+});
+
+form3.addEventListener('submit', e => {
+e.preventDefault();
+
+const isArabic = /[\u0600-\u06FF]/.test(ibaroInput3.value);
+ibaroInput3.style.direction = isArabic ? 'rtl' : 'ltr';
+
+const formData = new FormData(form3);
+for (let [key, value] of formData.entries()) {
+  formData.set(key, value.replace(/<br>/g, '\n'));
+}
+
+fetch('https://script.google.com/macros/s/AKfycbzaRMMac5UbiwHAJ8v9rrtxiGvuxhbuJlRl1LPCb0xnCaMJy16bthQ7sdkOhLgDIcJ_Lw/exec', {
+  method: 'POST',
+  body: formData,
+})
+.then(response => response.json())
+.then(data => {
+  console.log('chattdata3 Success!', data);
+  form3.reset();
+})
+.catch(error => console.error('chattdata3 Error!', error.message));
+
+popupFormContainer3.style.display = 'none';
+form3.reset();
+});
+});
+</script>
+
+</div>
+
+<div id="halaman4" class="page">
+  <!-- Pencarian dan tabel keempat -->
+<div class="search-container">
+<form action="#" method="GET" class="search-box" id="searchBox4">
+<input class="arabin" type="text" id="searchInput4" placeholder="" required>
+<button class="search-button" type="submit">Cari</button>
+</form>
+</div>
+<span id="searchResult4"></span>
+<!-- Tabel keempat -->
+<div class="chat-container">
+<div class="chat-body" id="chatBody4">
+<div class="TABEL">
+<table id="dataTable4">
+  <tbody>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Form keempat -->
+<button class="tombolinput" id="toggleFormBtn4"></button>
+<div id="popupFormContainer4" class="chat-form-container" style="display:none;">
+<form name="chattdata4" id="chatForm4" class="chat-form" method="post" action="">
+<textarea name="MAQRO" id="ibaroInput4" class="chat-input2" placeholder="نظم الفية ابن مالك ..."></textarea>
+<textarea name="MUROD" id="keteranganInput4" class="chat-input2" placeholder="المراد كياهي احمد فتح النهى ..."></textarea>
+<input class="kirim" type="submit" value="INPUT">
+</form>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+const toggleFormBtn4 = document.getElementById('toggleFormBtn4');
+const popupFormContainer4 = document.getElementById('popupFormContainer4');
+const form4 = document.forms['chattdata4'];
+const judulInput4 = document.getElementById('judulInput4');
+const ibaroInput4 = document.getElementById('ibaroInput4');
+const keteranganInput4 = document.getElementById('keteranganInput4');
+
+toggleFormBtn4.addEventListener('click', () => {
+popupFormContainer4.style.display = (popupFormContainer4.style.display === 'none' || popupFormContainer4.style.display === '') ? 'block' : 'none';
+form4.reset();
+});
+
+form4.addEventListener('submit', e => {
+e.preventDefault();
+
+const isArabic = /[\u0600-\u06FF]/.test(ibaroInput4.value);
+ibaroInput4.style.direction = isArabic ? 'rtl' : 'ltr';
+
+const formData = new FormData(form4);
+for (let [key, value] of formData.entries()) {
+  formData.set(key, value.replace(/<br>/g, '\n'));
+}
+
+fetch('https://script.google.com/macros/s/AKfycbxSLDaIVxTi62mWy9Xbjafzjb1W7W_reLGSec1-i-sK_zY4SEGnxXHrapO3BfLeIPPW/exec', {
+  method: 'POST',
+  body: formData,
+})
+.then(response => response.json())
+.then(data => {
+  console.log('chattdata4 Success!', data);
+  form4.reset();
+})
+.catch(error => console.error('chattdata4 Error!', error.message));
+
+popupFormContainer4.style.display = 'none';
+form4.reset();
+});
+});
+</script>
+
+</div>
+
+<div id="halaman5" class="page">
+  <!-- Pencarian dan tabel kelima -->
+<div class="search-container">
+<form action="#" method="GET" class="search-box" id="searchBox5">
+<input type="text" id="searchInput5" placeholder="" required>
+<button class="search-button" type="submit">Cari</button>
+</form>
+</div>
+
+<span id="searchResult5"></span>
+
+<script>
+let searchResults1 = [];
+let currentIndex1 = 0;
+
+let searchResults2 = [];
+let currentIndex2 = 0;
+
+let searchResults3 = [];
+let currentIndex3 = 0;
+
+let searchResults4 = [];
+let currentIndex4 = 0;
+
+let searchResults5 = [];
+let currentIndex5 = 0;
+
+function processText(text) {
+  return text.replace(/\*(.*?)\*/g, '<span class="red-text">$1</span>');
+}
+
+function fetchDataFromGoogleSheets(sheetURL, tableId) {
+  return fetch(sheetURL)
+    .then(response => response.json())
+    .then(data => populateTable(tableId, data.values))
+    .catch(error => console.error('Error fetching data:', error));
+}
+
+function populateTable(tableId, data) {
+  const table = document.getElementById(tableId);
+  data.forEach(row => {
+    const tr = document.createElement('tr');
+    row.forEach(cellText => {
+      const td = document.createElement('td');
+      td.textContent = cellText;
+      tr.appendChild(td);
+    });
+    table.appendChild(tr);
+  });
+
+  // Proses teks dalam sel setelah semua data dimasukkan
+  const cells = table.getElementsByTagName('td');
+  for (let i = 0; i < cells.length; i++) {
+    cells[i].innerHTML = processText(cells[i].innerHTML);
+  }
+}
+
+function searchTable(tableId, inputId, resultId, searchResults, currentIndex) {
+  const input = document.getElementById(inputId);
+  const filter = input.value.trim(); // Hapus spasi ekstra di awal dan akhir
+  const table = document.getElementById(tableId);
+  const rows = table.getElementsByTagName('tr');
+
+  resetCellColors(tableId);
+  searchResults.length = 0;
+
+  for (let i = 0; i < rows.length; i++) {
+    const cells = rows[i].getElementsByTagName('td');
+    let rowMatchesSearch = false;
+
+    for (let j = 0; j < cells.length; j++) {
+      const cell = cells[j];
+      if (cell) {
+        const cellText = cell.textContent || cell.innerText;
+
+        // Ubah ekspresi reguler untuk mencocokkan teks Arab
+        const regex = new RegExp(filter, 'giu'); // 'u' untuk Unicode (termasuk karakter Arab)
+        if (cellText.toUpperCase().includes(filter.toUpperCase()) || cellText.match(regex)) {
+          rowMatchesSearch = true;
+          cell.innerHTML = processText(cell.innerHTML);
+          const highlightedText = cell.innerHTML.replace(regex, match => `<span class="highlight">${match}</span>`);
+          cell.innerHTML = highlightedText;
+        }
+      }
+    }
+
+    if (rowMatchesSearch) {
+      searchResults.push(rows[i]);
+    }
+  }
+
+  if (searchResults.length > 0) {
+    scrollToResult(resultId, searchResults, currentIndex);
+    currentIndex = (currentIndex + 1) % searchResults.length;
+  } else {
+    document.getElementById(resultId).innerHTML = 'Tidak ada hasil ditemukan.';
+  }
+
+  return currentIndex;  // Return the updated index
+}
+
+function scrollToResult(resultId, searchResults, currentIndex) {
+  const searchResult = document.getElementById(resultId);
+
+  if (searchResults.length > 0) {
+    const currentRow = searchResults[currentIndex];
+    const highlightedText = currentRow.querySelector('.highlight');
+    if (highlightedText) {
+      highlightedText.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      searchResult.innerHTML = `Result ${currentIndex + 1} of ${searchResults.length}`;
+    }
+    searchResult.classList.remove('no-results');  // Hapus kelas jika ada hasil
+    currentIndex = (currentIndex + 1) % searchResults.length;
+  } else {
+    searchResult.innerHTML = 'Tidak ada hasil ditemukan.';
+    searchResult.classList.add('no-results');  // Tambahkan kelas jika tidak ada hasil
+  }
+
+  return currentIndex;  // Kembalikan indeks yang diperbarui
+}
+
+
+
+function resetCellColors(tableId) {
+  const table = document.getElementById(tableId);
+  const cells = table.querySelectorAll('.highlight, .red-text');
+  cells.forEach(cell => {
+    cell.outerHTML = cell.textContent || cell.innerText;
+  });
+}
+
+document.getElementById('searchBox1').addEventListener('submit', function(event) {
+  event.preventDefault();
+  currentIndex1 = searchTable('dataTable1', 'searchInput1', 'searchResult1', searchResults1, currentIndex1);
+});
+
+document.getElementById('searchBox2').addEventListener('submit', function(event) {
+  event.preventDefault();
+  currentIndex2 = searchTable('dataTable2', 'searchInput2', 'searchResult2', searchResults2, currentIndex2);
+});
+
+document.getElementById('searchBox3').addEventListener('submit', function(event) {
+  event.preventDefault();
+  currentIndex3 = searchTable('dataTable3', 'searchInput3', 'searchResult3', searchResults3, currentIndex3);
+});
+
+document.getElementById('searchBox4').addEventListener('submit', function(event) {
+  event.preventDefault();
+  currentIndex4 = searchTable('dataTable4', 'searchInput4', 'searchResult4', searchResults4, currentIndex4);
+});
+
+document.getElementById('searchBox5').addEventListener('submit', function(event) {
+  event.preventDefault();
+  currentIndex5 = searchTable('dataTable5', 'searchInput5', 'searchResult5', searchResults5, currentIndex5);
+});
+
+</script>
+<div class="chat-container">
+<div class="chat-body" id="chatBody5">
+<div class="TABEL">
+<table id="dataTable5">
+  <tbody>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<script>
+  function isArabic(text) {
+    const arabicRegex = /[\u0600-\u06FF]/;
+    return arabicRegex.test(text);
+  }
+
+  function processText(text) {
+    // Mengganti *...* dengan <span class="underline-text">...</span>
+    let processedText = text.replace(/\*(.*?)\*/g, '<span class="underline-text">$1</span>');
+    
+    // Mengganti _..._ dengan <span class="center-text">...</span>
+    processedText = processedText.replace(/\#(.*?)\#/g, '<span class="center-text">$1</span>');
+
+    // Mengganti "..." dengan <span class="quote-text">...</span>
+    processedText = processedText.replace(/\^(.*?)\^/g, '<span class="quote-text">$1</span>');
+
+    // Mengganti "..." dengan <span class="bold">...</span>
+    processedText = processedText.replace(/\$(.*?)\$/g, '<span class="bold">$1</span>');
+
+    return processedText;
+  }
+
+  function processDataAndPopulateTable(data, tableId) {
+    const values = data.values;
+    const tableBody = document.querySelector(`#${tableId} tbody`);
+    tableBody.innerHTML = '';
+
+    values.forEach(row => {
+      const newRow = tableBody.insertRow();
+
+      row.forEach(cellValue => {
+        const newCell = newRow.insertCell();
+        const isArabicText = isArabic(cellValue);
+
+        if (cellValue.trim() === '-') {
+          newCell.style.backgroundColor = 'transparent';
+        } else {
+          if (isArabicText) {
+            newCell.classList.add('rtl');
+          } else {
+            newCell.classList.add('indonesia');
+          }
+
+          
+          // Ganti karakter baris baru (\n) menjadi tag HTML <br>
+          const newText = document.createElement('div');
+          newText.innerHTML = processText(cellValue).replace(/\n/g, '<br>');
+          newCell.appendChild(newText);
+        }
+      });
+    });
+    
+  }
+
+  function getData(spreadsheetId, range, tableId) {
+    const API_KEY = 'AIzaSyA8x0yI8zCPUgZktmGNvQVTzhm1fdZ0K74';
+    fetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${API_KEY}`)
+      .then(response => response.json())
+      .then(data => processDataAndPopulateTable(data, tableId))
+      .catch(error => console.error('Error fetching data:', error));
+  }
+
+  // Ambil data untuk tabel pertama
+  const SPREADSHEET_ID1 = '1BJE7UYXe-ce89RABhMqPFx0KviLmIeBLb8KWK7VVJ6Y';
+  const RANGE1 = 'sheet1';
+  getData(SPREADSHEET_ID1, RANGE1, 'dataTable1');
+
+  // Ambil data untuk tabel kedua
+  const SPREADSHEET_ID2 = '1kPM4sZCdRfMGFQpZj8mXse8m6KLG62hvayrURA4iuJE';
+  const RANGE2 = 'sheet1';
+  getData(SPREADSHEET_ID2, RANGE2, 'dataTable2');
+
+  // Ambil data untuk tabel ketiga
+  const SPREADSHEET_ID3 = '10lKg7ICJWwVGOo__PtIufz-GeYx7dAA_hKyCHQsCBHo';
+  const RANGE3 = 'sheet1';
+  getData(SPREADSHEET_ID3, RANGE3, 'dataTable3');
+
+  // Ambil data untuk tabel keempat
+  const SPREADSHEET_ID4 = '1HbJkZS3vsmAv0YjViNV_dyLDhUFMpkjLmpxpd9XBO-g';
+  const RANGE4 = 'sheet1';
+  getData(SPREADSHEET_ID4, RANGE4, 'dataTable4');
+
+  // Ambil data untuk tabel kelima
+  const SPREADSHEET_ID5 = '1caiQjxr3pALddyoxwYhnO8klyo35njzmJtugLT3hLHg';
+  const RANGE5 = 'sheet1';
+  getData(SPREADSHEET_ID5, RANGE5, 'dataTable5');
+</script>
+<!-- Form kelima -->
+<button class="tombolinput" id="toggleFormBtn5"></button>
+<div id="popupFormContainer5" class="chat-form-container" style="display:none;">
+<form name="chattdata5" id="chatForm5" class="chat-form" method="post" action="">
+<textarea name="MAQRO" id="ibaroInput5" class="chat-input2" placeholder="الصق التعبير هنا ..." required></textarea>
+<textarea name="MUROD" id="keteranganInput5" class="chat-input3" placeholder="Murod..." required></textarea>
+<input class="kirim" type="submit" value="INPUT">
+</form>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+const toggleFormBtn5 = document.getElementById('toggleFormBtn5');
+const popupFormContainer5 = document.getElementById('popupFormContainer5');
+const form5 = document.forms['chattdata5'];
+const judulInput5 = document.getElementById('judulInput5');
+const ibaroInput5 = document.getElementById('ibaroInput5');
+const keteranganInput5 = document.getElementById('keteranganInput5');
+
+toggleFormBtn5.addEventListener('click', () => {
+popupFormContainer5.style.display = (popupFormContainer5.style.display === 'none' || popupFormContainer5.style.display === '') ? 'block' : 'none';
+form5.reset();
+});
+
+form5.addEventListener('submit', e => {
+e.preventDefault();
+
+const isArabic = /[\u0600-\u06FF]/.test(ibaroInput5.value);
+ibaroInput5.style.direction = isArabic ? 'rtl' : 'ltr';
+
+const formData = new FormData(form5);
+for (let [key, value] of formData.entries()) {
+  formData.set(key, value.replace(/<br>/g, '\n'));
+}
+
+fetch('https://script.google.com/macros/s/AKfycbxFEN_COsWEHVOo_ZFoDP-79vrLc2513g7WMbbJl1lB-OJzYb49Uxy1EkTnWJIc7EPi/exec', {
+  method: 'POST',
+  body: formData,
+})
+.then(response => response.json())
+.then(data => {
+  console.log('chattdata5 Success!', data);
+  form5.reset();
+})
+.catch(error => console.error('chattdata5 Error!', error.message));
+
+popupFormContainer5.style.display = 'none';
+form5.reset();
+});
+});
+</script>
+
+</div>
+</body>
+</html>
