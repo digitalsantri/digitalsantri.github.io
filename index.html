@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,8 +15,19 @@
             background-color: #f0f0f0;
             margin: 0;
         }
-        h1 {
-            color: #333;
+        .banner {
+            width: 300px;
+            height: 180px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         .button-container {
             display: flex;
@@ -24,7 +35,7 @@
             justify-content: center;
             gap: 5px; /* Reduced gap */
             margin-top: 10px;
-            max-width: 500PX;
+            max-width: 500px;
         }
         .button-item {
             display: flex;
@@ -79,28 +90,27 @@
             background: linear-gradient(45deg, #256bbd, #4a90e2);
         }
         .logout-btn {
-    background: linear-gradient(45deg, #3080f7, #56ccf2);
-    color: white;
-    width: 95%;
-    max-width: 480PX;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    margin-top: 20px;
-    font-size: 16px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-.logout-btn:hover {
-    background: linear-gradient(45deg, #256bbd, #4a90e2);
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-}
-.logout-btn:active {
-    transform: scale(0.98);
-}
-
+            background: linear-gradient(45deg, #3080f7, #56ccf2);
+            color: white;
+            width: 95%;
+            max-width: 480px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            margin-top: 20px;
+            font-size: 16px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .logout-btn:hover {
+            background: linear-gradient(45deg, #256bbd, #4a90e2);
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        .logout-btn:active {
+            transform: scale(0.98);
+        }
     </style>
     <script>
         // Cek apakah pengguna sudah login
@@ -122,6 +132,9 @@
     </script>
 </head>
 <body>
+    <div class="banner">
+        <img src="GAMBAR/BANNER.jpg" alt="Banner"> <!-- Ganti dengan path gambar banner Anda -->
+    </div>
     <div class="button-container">
         <div class="button-item">
             <button onclick="window.location.href='data.html'"><img src="GAMBAR/PRIFASI.png" alt="Button 1"></button>
@@ -148,15 +161,15 @@
             <p>Desain</p>
         </div>
         <div class="button-item">
-            <button onclick="window.location.href='DATA/IBAROH.html'"><img src="GAMBAR/IBAROH.png" alt="Button 6"></button>
+            <button onclick="window.location.href='DATA/IBAROH.html'"><img src="GAMBAR/IBAROH.png" alt="Button 7"></button>
             <p>Ibaroh</p>
         </div>
         <div class="button-item">
-            <button onclick="window.location.href='desain.html'"><img src="GAMBAR/KAJIAN.png" alt="Button 6"></button>
+            <button onclick="window.location.href='kajian.html'"><img src="GAMBAR/KAJIAN.png" alt="Button 8"></button>
             <p>Kajian</p>
         </div>
         <div class="button-item">
-            <button onclick="window.location.href='desain.html'"><img src="GAMBAR/CATATAN.png" alt="Button 6"></button>
+            <button onclick="window.location.href='catatan.html'"><img src="GAMBAR/CATATAN.png" alt="Button 9"></button>
             <p>Catatan</p>
         </div>
     </div>
