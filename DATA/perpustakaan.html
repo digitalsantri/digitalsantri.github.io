@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Perpustakaan Online</title>
   <style>
     body {
@@ -74,6 +73,7 @@
   <div id="library">
     <!-- Buku-buku akan ditampilkan di sini -->
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       fetch('https://script.google.com/macros/s/AKfycbzeQnMMhuNTMZVRgQ_3FwbTqfxTLY2fwNOpJtzFuR2ODUf0Qv-7L8nbceKbd2h17eyPAg/exec')
@@ -82,84 +82,114 @@
           const library = document.getElementById('library');
           const categories = {};
           const allBooks = data;
-
+  
           data.forEach(book => {
             if (!categories[book.category]) {
               categories[book.category] = [];
             }
             categories[book.category].push(book);
           });
-
+  
           for (const [category, books] of Object.entries(categories)) {
             const categoryDiv = document.createElement('div');
             categoryDiv.className = 'category';
-
+  
             const categoryTitle = document.createElement('div');
             categoryTitle.className = 'category-title';
             categoryTitle.textContent = category;
             categoryDiv.appendChild(categoryTitle);
-
+  
             const bookContainer = document.createElement('div');
             bookContainer.className = 'book-container';
-
+  
             books.forEach(book => {
               const bookDiv = document.createElement('div');
               bookDiv.className = 'book';
               bookDiv.innerHTML = `
                 <div class="book-title">${book.name}</div>
-                <a href="${book.url}" class="book-link" target="_blank">baca</a>
+                <a href="${book.url}" class="book-link" target="_blank" data-type="${book.type}">baca</a>
               `;
               bookContainer.appendChild(bookDiv);
             });
-
+  
             categoryDiv.appendChild(bookContainer);
             library.appendChild(categoryDiv);
           }
-
+  
           const searchInput = document.getElementById('searchInput');
           searchInput.addEventListener('input', function() {
             const searchTerm = searchInput.value.toLowerCase();
             library.innerHTML = '';
-
+  
             const filteredBooks = allBooks.filter(book => book.name.toLowerCase().includes(searchTerm));
             const filteredCategories = {};
-
+  
             filteredBooks.forEach(book => {
               if (!filteredCategories[book.category]) {
                 filteredCategories[book.category] = [];
               }
               filteredCategories[book.category].push(book);
             });
-
+  
             for (const [category, books] of Object.entries(filteredCategories)) {
               const categoryDiv = document.createElement('div');
               categoryDiv.className = 'category';
-
+  
               const categoryTitle = document.createElement('div');
               categoryTitle.className = 'category-title';
               categoryTitle.textContent = category;
               categoryDiv.appendChild(categoryTitle);
-
+  
               const bookContainer = document.createElement('div');
               bookContainer.className = 'book-container';
-
+  
               books.forEach(book => {
                 const bookDiv = document.createElement('div');
                 bookDiv.className = 'book';
                 bookDiv.innerHTML = `
                   <div class="book-title">${book.name}</div>
-                  <a href="${book.url}" class="book-link" target="_blank">baca</a>
+                  <a href="${book.url}" class="book-link" target="_blank" data-type="${book.type}">baca</a>
                 `;
                 bookContainer.appendChild(bookDiv);
               });
-
+  
               categoryDiv.appendChild(bookContainer);
               library.appendChild(categoryDiv);
+            }
+          });
+  
+          library.addEventListener('click', function(event) {
+            if (event.target.classList.contains('book-link')) {
+              event.preventDefault();
+              const url = event.target.href;
+              const type = event.target.dataset.type;
+  
+              if (type === 'zip') {
+                fetch(url)
+                  .then(response => response.arrayBuffer())
+                  .then(data => JSZip.loadAsync(data))
+                  .then(zip => {
+                    zip.forEach((relativePath, zipEntry) => {
+                      zipEntry.async('blob').then(blob => {
+                        const url = URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = zipEntry.name;
+                        a.click();
+                        URL.revokeObjectURL(url);
+                      });
+                    });
+                  })
+                  .catch(error => console.error('Error opening zip file:', error));
+              } else {
+                window.open(url, '_blank');
+              }
             }
           });
         })
         .catch(error => console.error('Error fetching book data:', error));
     });
   </script>
+  
 </body>
 </html>
