@@ -330,16 +330,16 @@ button:hover {
 }
     </style>
 </head>
-     <script>
+    <body> 
+         <script>
         // Cek apakah pengguna sudah login
         if (localStorage.getItem('loggedin') !== 'true') {
-            window.location.href = '../login.html';
+            window.location.href = 'login.html';
         } else {
             // Menyembunyikan URL setelah berhasil login
             history.replaceState(null, null, ' ');
         }
     </script>
-    <body> 
       <div class="search-container">
         <form action="#" method="GET" class="search-box">
           <input type="text" id="searchInput" placeholder="" required>
