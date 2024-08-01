@@ -68,7 +68,7 @@
         }
     </style>
     <script>
-    async function login(event) {
+        async function login(event) {
     event.preventDefault();
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
@@ -78,10 +78,9 @@
         const data = await response.json();
 
         const user = data.find(user => user.username === username && user.password === password);
-
+        
         if (user) {
-            // Menggunakan sessionStorage untuk menyimpan status login
-            sessionStorage.setItem('loggedin', 'true');
+            localStorage.setItem('loggedin', 'true');
             // Menyembunyikan URL setelah login berhasil
             history.replaceState(null, null, 'index.html');
             window.location.href = 'index.html';
@@ -91,16 +90,6 @@
     } catch (error) {
         console.error('Error:', error);
     }
-}
-
-// Pengecekan status login
-if (sessionStorage.getItem('loggedin') !== 'true') {
-    window.location.href = 'login.html';
-}
-
-function logout() {
-    sessionStorage.removeItem('loggedin');
-    window.location.href = 'login.html';
 }
 
     </script>
