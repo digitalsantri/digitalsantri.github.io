@@ -16,262 +16,293 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&family=Bebas+Neue&display=swap" rel="stylesheet">    
 <title>KONTEN</title>
-    <style>
+<style>
        
-body {
-  padding: 5px; /* Menambahkan padding pada body */
-  font-family: Arial, sans-serif; /* Menambahkan font yang umum digunakan */
-  background-color: #f0f0f0; /* Warna latar belakang seperti di Facebook */
-  margin: 0; /* Menghilangkan margin default */
-}
-@font-face {
-  font-family: 'CustomArabicFont';
-  src: url('arabic-font.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal; }
-
-.rtl, .indonesia {
-  text-align: justify;
-  font-size: 13px;
-}
-.rtl {
-  direction: rtl;
-  font-family: 'CustomArabicFont', 'Traditional Arabic', Tahoma, sans-serif;
-}
-#dataTable1,
-#dataTable2,
-#dataTable0 {
-  width: 100%;
-  max-width: 100%;
-}
-#dataTable1 th,
-#dataTable1 td,
-#dataTable2 th,
-#dataTable2 td,
-#dataTable0 th,
-#dataTable0 td {
-  display: block;
-  padding: 2px;
-  font-size: 16px;
-  margin-top: 0px;
-  margin-bottom: 3px;
-  color: black;
-}
-.table-image {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Efek bayangan */
-  transition: transform 0.3s, box-shadow 0.3s; /* Transisi halus */
-  width: 100%; /* Lebar gambar disesuaikan dengan kolom */
-  height: 100%; /* Tinggi otomatis agar proporsional */
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#dataTable1 th:nth-child(1),
-#dataTable1 td:nth-child(1),
-#dataTable0 th:nth-child(1),
-#dataTable0 td:nth-child(1) {
-  color:#ffffff; /* Membuat teks tidak terlihat */
-  text-shadow: none;  /* Menghapus bayangan teks jika ada */
-  width: 70px; /* 2 units lebar */
-  height: 70px; /* 3 units tinggi */
-  margin-top: 0px;
-  font-size: 17px;
-
-}
-#dataTable2 th:nth-child(1),
-#dataTable2 td:nth-child(1){
-  color:#ffffff; /* Membuat teks tidak terlihat */
-  text-shadow: none;  /* Menghapus bayangan teks jika ada */
-  width: 128px; /* 2 units lebar */
-  height: 72px; /* 3 units tinggi */
-  margin-top: 0px;
-  font-size: 17px;
-}
-#dataTable1 th:nth-child(2),
-#dataTable1 td:nth-child(2),
-#dataTable0 th:nth-child(2),
-#dataTable0 td:nth-child(2) {
-    margin-top: -77px;
-    margin-left: 80px;
-    font-size: 12px; /* Ukuran font */
-    width: auto; /* Lebar otomatis */
-    height: auto; /* Tinggi otomatis */
-    color: #ffffff; /* Warna teks */
-    padding: 2px; /* Padding untuk tampilan yang lebih baik */
-    background-color:  #21958b;
-    border-radius: 2px; /* Sudut melengkung */
-    width:fit-content; /* 2 units lebar */  
-    font-family: "Josefin Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: weight;
-    font-style: normal;
-}
-#dataTable2 th:nth-child(2),
-#dataTable2 td:nth-child(2) {
-    margin-top: -77px;
-    margin-left: 140px;
-    font-size: 12px; /* Ukuran font */
-    width: auto; 
-    height: auto; /* Tinggi otomatis */
-    color: #ffffff; /* Warna teks */
-    padding: 2px; /* Padding untuk tampilan yang lebih baik */
-    background-color:  #21958b;
-    border-radius: 2px; /* Sudut melengkung */
-    width:fit-content; /* 2 units lebar */  
-    font-family: "Josefin Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: weight;
-    font-style: normal;
-}
-
-#dataTable1 th:nth-child(3),
-#dataTable1 td:nth-child(3),
-#dataTable0 th:nth-child(3),
-#dataTable0 td:nth-child(3) {
-    margin-top: -5px;
-    margin-left: 78px;
-    font-size: 10px; /* Ukuran font */
-    width: auto; /* Lebar otomatis */
-    height: auto; /* Tinggi otomatis */
-    color: #000000; /* Warna teks */
-    font-family: "Asap", sans-serif;
-
-}
-#dataTable2 th:nth-child(3),
-#dataTable2 td:nth-child(3) {
-    margin-top: -5px;
-    margin-left: 140px;
-    font-size: 10px; /* Ukuran font */
-    width: auto; /* Lebar otomatis */
-    height: auto; /* Tinggi otomatis */
-    color: #000000; /* Warna teks */
-    font-family: "Asap", sans-serif;
-}
-
-#dataTable1 th:nth-child(4),
-#dataTable1 td:nth-child(4),
-#dataTable0 th:nth-child(4),
-#dataTable0 td:nth-child(4) {
-    margin-left: 78px;
-    margin-top: -5px;
-    font-size: 10px; /* Ukuran font */
-    color:#919191; 
-    font-family: "Asap", sans-serif;
-
-}
-#dataTable2 th:nth-child(4),
-#dataTable2 td:nth-child(4) {
-    margin-left: 140px;
-    margin-top: -5px;
-    font-size: 10px; /* Ukuran font */
-    color:#919191; 
-    font-family: "Asap", sans-serif;
-
-}
-
-#dataTable1 th:nth-child(5),
-#dataTable1 td:nth-child(5),
-#dataTable2 th:nth-child(5),
-#dataTable2 td:nth-child(5),
-#dataTable0 th:nth-child(5),
-#dataTable0 td:nth-child(5) {
-  display: none;
-    
-}
-.hidden-text div {
-  display: none;
-}
-
-#dataTable1 tr:first-child td,
-#dataTable2 tr:first-child td,
-#dataTable0 tr:first-child td {
-  border-radius: 0px;
-  background-color: black;
-  color: #ffffff;
-}
-.TABEL {
-  margin: 0px;
-  border-collapse: collapse;
-}
-#dataTable1 td.rtl,
-#dataTable2 td.rtl,
-#dataTable0 td.rtl {
-  direction: rtl;
-}
-#dataTable1 td.indonesia,
-#dataTable2 td.indonesia,
-#dataTable0 td.indonesia {
-  direction: ltr;
-}
-.underline-text {
-color:#ff1a1a;
-}
-
-.center-text {
-    display:block;
-    margin-bottom: -20px;
-    text-align: center;
-    }
-.quote-text {
-    display: block;
-    text-align: left;
-    margin-bottom: -20px;
-    font-family: "Lato", sans-serif;
-}
-.bold {
-  font-weight: bold;
-}
-.table-row {
-  background-color: rgb(255, 255, 255);
-  padding: 5px; 
-  height: auto;
-  width: auto;
-  min-height: 80px;
-  margin-bottom: 2px; 
-  border-radius: 3px; 
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-#dataTable1 tbody tr:first-child,
-#dataTable2 tbody tr:first-child,
-#dataTable0 tbody tr:first-child {
-  display: none;
-}
-.search-box {
-    width: 98%;
-    display: flex;
-    margin: 0 auto;
-    position: fixed;
-    z-index: 10000;
-}
-input[type="text"] {
+  body {
+    padding: 5px; /* Menambahkan padding pada body */
+    font-family: Arial, sans-serif; /* Menambahkan font yang umum digunakan */
+    background-color: #f0f0f0; /* Warna latar belakang seperti di Facebook */
+    margin: 0; /* Menghilangkan margin default */
+  }
+  @font-face {
+    font-family: 'CustomArabicFont';
+    src: url('arabic-font.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal; }
+  
+  .rtl, .indonesia {
+    text-align: justify;
+    font-size: 13px;
+  }
+  .rtl {
+    direction: rtl;
+    font-family: 'CustomArabicFont', 'Traditional Arabic', Tahoma, sans-serif;
+  }
+  #dataTable1,
+  #dataTable2,
+  #dataTable0 {
     width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 3px 0 0 3px;
-}
-button {
-    width: 20%;
-    padding: 10px;
-    background-color: #21958b;
-    color: #fff;
-    border: 1px solid #69694ca8;
-    border-radius: 0 3px 3px 0;
-    cursor: pointer;
-}
-button:hover {
-    background-color: #1a371f;
-}
-.konten {
+    max-width: 100%;
+  }
+  #dataTable1 th,
+  #dataTable1 td,
+  #dataTable2 th,
+  #dataTable2 td,
+  #dataTable0 th,
+  #dataTable0 td {
+    display: block;
+    padding: 2px;
+    font-size: 16px;
+    margin-top: 0px;
+    margin-bottom: 3px;
+    color: black;
+  }
+  .table-image {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Efek bayangan */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transisi halus */
+    width: 100%; /* Lebar gambar disesuaikan dengan kolom */
+    height: 100%; /* Tinggi otomatis agar proporsional */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  #dataTable1 th:nth-child(1),
+  #dataTable1 td:nth-child(1),
+  #dataTable0 th:nth-child(1),
+  #dataTable0 td:nth-child(1) {
+    color:#ffffff; /* Membuat teks tidak terlihat */
+    text-shadow: none;  /* Menghapus bayangan teks jika ada */
+    width: 70px; /* 2 units lebar */
+    height: 70px; /* 3 units tinggi */
+    margin-top: 0px;
+    font-size: 17px;
+  
+  }
+  #dataTable2 th:nth-child(1),
+  #dataTable2 td:nth-child(1){
+    color:#ffffff; /* Membuat teks tidak terlihat */
+    text-shadow: none;  /* Menghapus bayangan teks jika ada */
+    width: 128px; /* 2 units lebar */
+    height: 72px; /* 3 units tinggi */
+    margin-top: 0px;
+    font-size: 17px;
+  }
+  #dataTable1 th:nth-child(2),
+  #dataTable1 td:nth-child(2),
+  #dataTable0 th:nth-child(2),
+  #dataTable0 td:nth-child(2) {
+      margin-top: -77px;
+      margin-left: 80px;
+      font-size: 12px; /* Ukuran font */
+      width: auto; /* Lebar otomatis */
+      height: auto; /* Tinggi otomatis */
+      color: #ffffff; /* Warna teks */
+      padding: 2px; /* Padding untuk tampilan yang lebih baik */
+      background-color:  #21958b;
+      border-radius: 2px; /* Sudut melengkung */
+      width:fit-content; /* 2 units lebar */  
+      font-family: "Josefin Sans", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: weight;
+      font-style: normal;
+  }
+  #dataTable2 th:nth-child(2),
+  #dataTable2 td:nth-child(2) {
+      margin-top: -77px;
+      margin-left: 140px;
+      font-size: 12px; /* Ukuran font */
+      width: auto; 
+      height: auto; /* Tinggi otomatis */
+      color: #ffffff; /* Warna teks */
+      padding: 2px; /* Padding untuk tampilan yang lebih baik */
+      background-color:  #21958b;
+      border-radius: 2px; /* Sudut melengkung */
+      width:fit-content; /* 2 units lebar */  
+      font-family: "Josefin Sans", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: weight;
+      font-style: normal;
+  }
+  
+  #dataTable1 th:nth-child(3),
+  #dataTable1 td:nth-child(3),
+  #dataTable0 th:nth-child(3),
+  #dataTable0 td:nth-child(3) {
+      margin-top: -5px;
+      margin-left: 78px;
+      font-size: 10px; /* Ukuran font */
+      width: auto; /* Lebar otomatis */
+      height: auto; /* Tinggi otomatis */
+      color: #000000; /* Warna teks */
+      font-family: "Asap", sans-serif;
+  
+  }
+  #dataTable2 th:nth-child(3),
+  #dataTable2 td:nth-child(3) {
+      margin-top: -5px;
+      margin-left: 140px;
+      font-size: 10px; /* Ukuran font */
+      width: auto; /* Lebar otomatis */
+      height: auto; /* Tinggi otomatis */
+      color: #000000; /* Warna teks */
+      font-family: "Asap", sans-serif;
+  }
+  
+  #dataTable1 th:nth-child(4),
+  #dataTable1 td:nth-child(4),
+  #dataTable0 th:nth-child(4),
+  #dataTable0 td:nth-child(4) {
+      margin-left: 78px;
+      margin-top: -5px;
+      font-size: 10px; /* Ukuran font */
+      color:#919191; 
+      font-family: "Asap", sans-serif;
+  
+  }
+  #dataTable2 th:nth-child(4),
+  #dataTable2 td:nth-child(4) {
+      margin-left: 140px;
+      margin-top: -5px;
+      font-size: 10px; /* Ukuran font */
+      color:#919191; 
+      font-family: "Asap", sans-serif;
+  
+  }
+  
+  #dataTable1 th:nth-child(5),
+  #dataTable1 td:nth-child(5),
+  #dataTable2 th:nth-child(5),
+  #dataTable2 td:nth-child(5),
+  #dataTable0 th:nth-child(5),
+  #dataTable0 td:nth-child(5) {
+    display: none;
+      
+  }
+  .hidden-text div {
+    display: none;
+  }
+  
+  #dataTable1 tr:first-child td,
+  #dataTable2 tr:first-child td,
+  #dataTable0 tr:first-child td {
+    border-radius: 0px;
+    background-color: black;
+    color: #ffffff;
+  }
+  .TABEL {
+    margin: 0px;
+    border-collapse: collapse;
+  }
+  #dataTable1 td.rtl,
+  #dataTable2 td.rtl,
+  #dataTable0 td.rtl {
+    direction: rtl;
+  }
+  #dataTable1 td.indonesia,
+  #dataTable2 td.indonesia,
+  #dataTable0 td.indonesia {
+    direction: ltr;
+  }
+  .underline-text {
+  color:#ff1a1a;
+  }
+  
+  .center-text {
+      display:block;
+      margin-bottom: -20px;
+      text-align: center;
+      }
+  .quote-text {
+      display: block;
+      text-align: left;
+      margin-bottom: -20px;
+      font-family: "Lato", sans-serif;
+  }
+  .bold {
+    font-weight: bold;
+  }
+  .table-row {
+    background-color: rgb(255, 255, 255);
+    padding: 5px; 
+    height: auto;
+    width: auto;
+    min-height: 80px;
+    margin-bottom: 2px; 
+    border-radius: 3px; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  #dataTable1 tbody tr:first-child,
+  #dataTable2 tbody tr:first-child,
+  #dataTable0 tbody tr:first-child {
+    display: none;
+  }
+  .search-box {
+      width: 98%;
+      display: flex;
+      margin: 0 auto;
+      position: fixed;
+      z-index: 10000;
+  }
+  input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 3px 0 0 3px;
+  }
+  button {
+      width: 20%;
+      padding: 10px;
+      background-color: #21958b;
+      color: #fff;
+      border: 1px solid #69694ca8;
+      border-radius: 0 3px 3px 0;
+      cursor: pointer;
+  }
+  button:hover {
+      background-color: #1a371f;
+  }
+  .konten {
+      width: auto;
+      font-weight: bold;
+      display: flex;
+      position: relative;
+      margin-top: 45px;
+      margin-bottom: 2px;
+      color: #fff;
+      background-color: #21958b;
+      border-left: 5px solid #00625a;
+      padding: 5px 8px;
+      border-radius: 3px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      font-family: "Josefin Sans", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: weight;
+      font-style: normal;
+      font-size: 20px;
+      z-index: 1000;
+      justify-content: space-between; /* Untuk menempatkan konten di ujung kanan */
+      align-items: center; /* Untuk memastikan konten dan ikon berada di tengah vertikal */
+      text-decoration: none;
+  }
+  .konten .fa-chevron-right {
+    font-size: 12px;
+  }
+  .konten span {
+    flex: 1; /* Menggunakan flex untuk mengisi sisa ruang di sebelah kiri */
+  }
+  .konten .fas {
+    margin-left: 10px; /* Jarak antara teks dan ikon */
+  }
+  .konten1 {
     width: auto;
     font-weight: bold;
     display: flex;
-    position: relative;
-    margin-top: 45px;
-    margin-bottom: 2px;
     color: #fff;
+    position: relative;
+    margin-bottom: 2px;
     background-color: #21958b;
     border-left: 5px solid #00625a;
     padding: 5px 8px;
@@ -284,53 +315,22 @@ button:hover {
     font-size: 20px;
     z-index: 1000;
     justify-content: space-between; /* Untuk menempatkan konten di ujung kanan */
-    align-items: center; /* Untuk memastikan konten dan ikon berada di tengah vertikal */
+    align-items: center;
     text-decoration: none;
-}
-.konten .fa-chevron-right {
-  font-size: 12px;
-}
-.konten span {
-  flex: 1; /* Menggunakan flex untuk mengisi sisa ruang di sebelah kiri */
-}
-.konten .fas {
-  margin-left: 10px; /* Jarak antara teks dan ikon */
-}
-.konten1 {
-  width: auto;
-  font-weight: bold;
-  display: flex;
-  color: #fff;
-  position: relative;
-  margin-bottom: 2px;
-  background-color: #21958b;
-  border-left: 5px solid #00625a;
-  padding: 5px 8px;
-  border-radius: 3px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  font-family: "Josefin Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: weight;
-  font-style: normal;
-  font-size: 20px;
-  z-index: 1000;
-  justify-content: space-between; /* Untuk menempatkan konten di ujung kanan */
-  align-items: center;
-  text-decoration: none;
-  margin-top: 10px;
-}
-.konten1 .fa-chevron-right {
-  font-size: 12px;
-}
-.konten1 span {
-  flex: 1; /* Menggunakan flex untuk mengisi sisa ruang di sebelah kiri */
-}
-.konten1 .fas {
-  margin-left: 10px; /* Jarak antara teks dan ikon */
-}
-    </style>
+    margin-top: 10px;
+  }
+  .konten1 .fa-chevron-right {
+    font-size: 12px;
+  }
+  .konten1 span {
+    flex: 1; /* Menggunakan flex untuk mengisi sisa ruang di sebelah kiri */
+  }
+  .konten1 .fas {
+    margin-left: 10px; /* Jarak antara teks dan ikon */
+  }
+      </style>
 </head>
-    <body> 
+    <body>
          <script>
         // Cek apakah pengguna sudah login
         if (localStorage.getItem('loggedin') !== 'true') {
@@ -367,6 +367,7 @@ button:hover {
             cell.innerHTML = cell.textContent; // Mengembalikan teks asli tanpa penyorotan
         });
     }
+
     // Fungsi untuk mencari dalam tabel
     function searchInTable(tableId) {
         const table = document.getElementById(tableId);
@@ -402,8 +403,6 @@ button:hover {
     resetCellColors();
 
     // Cari di kedua tabel
-    const result1 = searchInTable('dataTable1');
-    const result2 = searchInTable('dataTable2');
     const result0 = searchInTable('dataTable0');
 
     // Tampilkan pesan jika tidak ada hasil ditemukan
@@ -434,9 +433,8 @@ document.querySelector('.search-box').addEventListener('submit', function(event)
     searchTables(); // Memanggil fungsi pencarian
 });
 </script>
-<a href="PROGRAM/KONTEN1.html" class="konten">
+<a href="KONTEN1.html" class="konten">
   <span>Program</span>
-  <i class="fas fa-chevron-right"></i>
 </a>   
 <div id="image-container"></div>
     <!-- Second table -->
@@ -454,44 +452,7 @@ document.querySelector('.search-box').addEventListener('submit', function(event)
         </div>
       </div>
     </div>
-    <a href="PROGRAM/KONTEN2.html" class="konten1">
-      <span>Software</span>
-      <i class="fas fa-chevron-right"></i>
-    </a>     
-        <!-- First table -->
-    <div class="chat-container">
-      <div class="chat-body" id="chatBody">
-        <div class="TABEL">
-          <table id="dataTable1">
-            <tbody>
-              <tr>
-                <th></th>
-                <th></th>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <a href="PROGRAM/KONTEN3.html" class="konten1">
-      <span>Video</span>
-      <i class="fas fa-chevron-right"></i>
-    </a> 
-    <!-- Second table -->
-    <div class="chat-container">
-      <div class="chat-body" id="chatBody2">
-        <div class="TABEL">
-          <table id="dataTable2">
-            <tbody>
-              <tr>
-                <th></th>
-                <th></th>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+
     
     <script>
       function isArabic(text) {
@@ -502,13 +463,13 @@ document.querySelector('.search-box').addEventListener('submit', function(event)
       const API_KEY = 'AIzaSyA8x0yI8zCPUgZktmGNvQVTzhm1fdZ0K74';
 
       const SPREADSHEET_ID_0 = '1KhOqE6QfKJyy0K12BHJB8smIWkGWukZ805WV5H8Ds44';
-      const RANGE_0 = 'PROGRAM';
+      const RANGE_0 = 'LIS_PROGRAM';
     
       const SPREADSHEET_ID_1 = '1KhOqE6QfKJyy0K12BHJB8smIWkGWukZ805WV5H8Ds44';
-      const RANGE_1 = 'SOFTWARE';
+      const RANGE_1 = 'LIS_SOFTWARE';
     
       const SPREADSHEET_ID_2 = '1KhOqE6QfKJyy0K12BHJB8smIWkGWukZ805WV5H8Ds44';
-      const RANGE_2 = 'VIDEO';
+      const RANGE_2 = 'LIS_VIDEO';
     
       function processText(text) {
         let processedText = text.replace(/\*(.*?)\*/g, '<span class="underline-text">$1</span>');
@@ -538,7 +499,7 @@ document.querySelector('.search-box').addEventListener('submit', function(event)
           // Get URL from column E (index 4)
           const url = row[4];
     
-          newRowDiv.addEventListener('click', function() {
+           newRowDiv.addEventListener('click', function() {
   const cleanUrl = url.replace(/^https?:\/\//, '');
   const finalUrl = `https://${cleanUrl}`;
   window.location.href = finalUrl;
