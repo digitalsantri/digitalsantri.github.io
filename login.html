@@ -2,7 +2,6 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Login</title>
     <style>
@@ -67,31 +66,37 @@
             color: #777;
         }
     </style>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script>
         async function login(event) {
-    event.preventDefault();
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const recaptchaResponse = grecaptcha.getResponse();
 
-    try {
-        const response = await fetch('https://script.google.com/macros/s/AKfycbyzeL7NYA5Sgwurst52x2p3Ln5j0WkhatHT17EARR-SWXweArt62ng_Hdimd-_e3TuFrQ/exec');
-        const data = await response.json();
+            if (!recaptchaResponse) {
+                alert('Silakan verifikasi CAPTCHA terlebih dahulu.');
+                return;
+            }
 
-        const user = data.find(user => user.username === username && user.password === password);
-        
-        if (user) {
-            localStorage.setItem('loggedin', 'true');
-            // Menyembunyikan URL setelah login berhasil
-            history.replaceState(null, null, 'index.html');
-            window.location.href = 'index.html';
-        } else {
-            alert('Username atau password salah!');
+            try {
+                const response = await fetch('https://script.google.com/macros/s/AKfycbyzeL7NYA5Sgwurst52x2p3Ln5j0WkhatHT17EARR-SWXweArt62ng_Hdimd-_e3TuFrQ/exec');
+                const data = await response.json();
+
+                const user = data.find(user => user.username === username && user.password === password);
+                
+                if (user) {
+                    localStorage.setItem('loggedin', 'true');
+                    // Menyembunyikan URL setelah login berhasil
+                    history.replaceState(null, null, 'index.html');
+                    window.location.href = 'index.html';
+                } else {
+                    alert('Username atau password salah!');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
         }
-    } catch (error) {
-        console.error('Error:', error);
-    }
-}
-
     </script>
 </head>
 <body>
@@ -101,6 +106,10 @@
         <input type="text" id="username" required>
         <label for="password">Password:</label>
         <input type="password" id="password" required>
+
+        <!-- Google reCAPTCHA -->
+        <div class="g-recaptcha" data-sitekey="6Lf9FSYqAAAAABj6e_RlsWHWl97TPvAn-UjiWCzq"></div>
+
         <input type="submit" value="Login">
     </form>
 </body>
