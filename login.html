@@ -26,7 +26,7 @@
         .logo {
             display: block;
             margin: 0 auto 20px;
-            width: 80%; /* Adjust the width as needed */
+            width: 80%;
             height: auto;
         }
         label {
@@ -47,7 +47,7 @@
         input[type="text"]:focus, input[type="password"]:focus {
             border-color: #3080f7;
         }
-        input[type="submit"] {
+        input[type="submit"], .register-btn {
             background-color: #3080f7;
             color: white;
             padding: 10px 15px;
@@ -57,8 +57,9 @@
             width: 100%;
             font-size: 16px;
             transition: background-color 0.3s;
+            text-align: center;
         }
-        input[type="submit"]:hover {
+        input[type="submit"]:hover, .register-btn:hover {
             background-color: #256bbd;
         }
         .footer {
@@ -66,32 +67,45 @@
             margin-top: 20px;
             color: #777;
         }
+        .button-group {
+            display: flex;
+            gap: 10px;
+        }
+        .register-btn {
+            background-color: #4CAF50;
+            flex: 1;
+        }
+        .login-btn {
+            flex: 1;
+        }
     </style>
     <script>
         async function login(event) {
-    event.preventDefault();
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
 
-    try {
-        const response = await fetch('https://script.google.com/macros/s/AKfycbxbNDWkE1dNUokLTlMlXJmH375-ZLlEQ2oqEfmkhCnqFuRCT8FHNPjfyi7I-8b0O23PQQ/exec');
-        const data = await response.json();
+            try {
+                const response = await fetch('https://script.google.com/macros/s/AKfycbxbNDWkE1dNUokLTlMlXJmH375-ZLlEQ2oqEfmkhCnqFuRCT8FHNPjfyi7I-8b0O23PQQ/exec');
+                const data = await response.json();
 
-        const user = data.find(user => user.username === username && user.password === password);
-        
-        if (user) {
-            localStorage.setItem('loggedin', 'true');
-            // Menyembunyikan URL setelah login berhasil
-            history.replaceState(null, null, 'index.html');
-            window.location.href = 'index.html';
-        } else {
-            alert('Username atau password salah!');
+                const user = data.find(user => user.username === username && user.password === password);
+
+                if (user) {
+                    localStorage.setItem('loggedin', 'true');
+                    history.replaceState(null, null, 'index.html');
+                    window.location.href = 'index.html';
+                } else {
+                    alert('Username atau password salah!');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
         }
-    } catch (error) {
-        console.error('Error:', error);
-    }
-}
 
+        function goToRegister() {
+            window.location.href = 'register.html'; // Ganti dengan halaman register yang sesuai
+        }
     </script>
 </head>
 <body>
@@ -101,7 +115,10 @@
         <input type="text" id="username" required>
         <label for="password">Password:</label>
         <input type="password" id="password" required>
-        <input type="submit" value="Login">
+        <div class="button-group">
+            <input type="submit" value="Login" class="login-btn">
+            <button type="button" class="register-btn" onclick="goToRegister()">Register</button>
+        </div>
     </form>
 </body>
 </html>
