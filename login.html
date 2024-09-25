@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Login</title>
+    <!-- Tambahkan tautan ke Font Awesome untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/kTc+gq6r6bMTK9fz2N1bQlfKXl5N5VzDo9ZsGVBlAEfHyKO1Bc9gGyTCaB+LV1cKGNu1pg2LxVxPA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -78,6 +81,20 @@
         .login-btn {
             flex: 1;
         }
+        .password-wrapper {
+            position: relative;
+        }
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 35%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+        .toggle-password i {
+            font-size: 1.2em;
+            color: #888;
+        }
     </style>
     <script>
         async function login(event) {
@@ -111,14 +128,37 @@
 <body>
     <form onsubmit="login(event)">
         <img src="GAMBAR/logo.png" alt="Logo" class="logo"> <!-- Replace with your logo path -->
-        <label for="username">Email:</label>
-        <input type="text" id="username" required>
-        <label for="password">Password:</label>
-        <input type="password" id="password" required>
+        <input type="text" placeholder="Email" id="username" required>
+        <div class="password-wrapper">
+                <input type="password" name="password" id="password" placeholder="Password" required>
+                <span class="toggle-password" onclick="togglePassword()">
+                    <i id="eyeIcon" class="fas fa-eye"></i> <!-- Icon Mata -->
+                </span>
+            </div>
         <div class="button-group">
             <input type="submit" value="Login" class="login-btn">
             <button type="button" class="register-btn" onclick="goToRegister()">Register</button>
         </div>
     </form>
+     <!-- Tambahkan tautan ke Font Awesome -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+
+     <script>
+         function togglePassword() {
+             const passwordField = document.getElementById("password");
+             const eyeIcon = document.getElementById("eyeIcon");
+ 
+             // Toggle between password and text visibility
+             if (passwordField.type === "password") {
+                 passwordField.type = "text";  // Show password
+                 eyeIcon.classList.remove("fa-eye");
+                 eyeIcon.classList.add("fa-eye-slash");  // Change icon to eye-slash
+             } else {
+                 passwordField.type = "password";  // Hide password
+                 eyeIcon.classList.remove("fa-eye-slash");
+                 eyeIcon.classList.add("fa-eye");  // Change icon back to eye
+             }
+         }
+     </script>
 </body>
 </html>
