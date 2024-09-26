@@ -179,6 +179,12 @@
     display: none;
       
   }
+  
+  #dataTable0 th:nth-child(6),
+  #dataTable0 td:nth-child(6) {
+    display: none;
+      
+  }
   .hidden-text div {
     display: none;
   }
@@ -550,14 +556,25 @@ document.querySelector('.search-box').addEventListener('submit', function(event)
           .catch(error => console.error('Error fetching data:', error));
       }
     
+      
       function extractIdFromUrl(url) {
-        const regex = /\/d\/(.*?)\//;
-        const match = url.match(regex);
-        if (match && match[1]) {
-          return match[1];
-        }
-        return null;
-      }
+  // Coba ekstrak ID dari format /d/<ID>/
+  let regex = /\/d\/(.*?)\//;
+  let match = url.match(regex);
+  
+  // Jika tidak ditemukan, coba ekstrak dari format open?id=<ID>
+  if (!match || !match[1]) {
+    regex = /open\?id=(.*?)(?:&|$)/;
+    match = url.match(regex);
+  }
+
+  // Jika ditemukan ID, kembalikan nilainya
+  if (match && match[1]) {
+    return match[1];
+  }
+  
+  return null; // Jika tidak ditemukan ID
+}
       getData(SPREADSHEET_ID_0, RANGE_0, 'dataTable0');
       getData(SPREADSHEET_ID_1, RANGE_1, 'dataTable1');
       getData(SPREADSHEET_ID_2, RANGE_2, 'dataTable2');

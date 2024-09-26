@@ -179,6 +179,12 @@
     display: none;
       
   }
+
+  #dataTable0 th:nth-child(6),
+  #dataTable0 td:nth-child(6) {
+    display: none;
+      
+  }
   .hidden-text div {
     display: none;
   }
@@ -328,6 +334,46 @@
   .konten1 .fas {
     margin-left: 10px; /* Jarak antara teks dan ikon */
   }
+/* Basic reset and layout adjustments */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Floating button style */
+.floating-btn {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background-color: #21958b; /* Green background */
+  border-radius: 50%;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+
+.floating-btn:hover {
+  background-color: #00625a; /* Darker green on hover */
+  cursor: pointer;
+}
+
+/* Gambar ikon upload di dalam tombol */
+.upload-icon {
+  width: 40px;
+  height: 40px;
+}
+
+/* Add smooth interaction for mobile */
+.floating-btn:active {
+  transform: scale(0.95);
+}
+
       </style>
 </head>
     <body>
@@ -551,17 +597,30 @@ document.querySelector('.search-box').addEventListener('submit', function(event)
       }
     
       function extractIdFromUrl(url) {
-        const regex = /\/d\/(.*?)\//;
-        const match = url.match(regex);
-        if (match && match[1]) {
-          return match[1];
-        }
-        return null;
-      }
+  // Coba ekstrak ID dari format /d/<ID>/
+  let regex = /\/d\/(.*?)\//;
+  let match = url.match(regex);
+  
+  // Jika tidak ditemukan, coba ekstrak dari format open?id=<ID>
+  if (!match || !match[1]) {
+    regex = /open\?id=(.*?)(?:&|$)/;
+    match = url.match(regex);
+  }
+
+  // Jika ditemukan ID, kembalikan nilainya
+  if (match && match[1]) {
+    return match[1];
+  }
+  
+  return null; // Jika tidak ditemukan ID
+}
       getData(SPREADSHEET_ID_0, RANGE_0, 'dataTable0');
       getData(SPREADSHEET_ID_1, RANGE_1, 'dataTable1');
       getData(SPREADSHEET_ID_2, RANGE_2, 'dataTable2');
     </script>
-    
+   <!-- Floating Upload Button -->
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSc3uYenDG6Ll4hpSs4d8SoT39MKb2Z44zwt2B1dBsPUFqikDw/viewform?usp=sf_link" target="_blank" class="floating-btn">
+    <img src="../../GAMBAR/upload.png" alt="Upload" class="upload-icon"> <!-- Ganti dengan gambar Anda -->
+  </a>
   </body>
   </html>
