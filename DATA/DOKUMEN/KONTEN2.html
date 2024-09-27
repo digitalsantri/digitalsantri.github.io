@@ -334,6 +334,117 @@
   .konten1 .fas {
     margin-left: 10px; /* Jarak antara teks dan ikon */
   }
+/* Basic reset and layout adjustments */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Tombol untuk memunculkan popup */
+.floating-btn {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background-color: #21958b; /* Green background */
+    border-radius: 50%;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* Haluskan bayangan */
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border: none; /* Menghapus border default */
+    cursor: pointer; /* Mengubah cursor menjadi pointer */
+}
+
+.floating-btn:hover {
+    background-color: #00625a; /* Warna hijau lebih gelap saat hover */
+    transform: translateY(-5px); /* Tombol naik sedikit saat hover */
+}
+
+/* Gambar ikon upload di dalam tombol */
+.upload-icon {
+    width: 40px;
+    height: 40px;
+}
+
+/* Popup overlay */
+.popup-overlay {
+    display: none; /* Hide by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Lebih gelap untuk kontras yang lebih baik */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Pastikan popup di atas elemen lain */
+}
+
+/* Popup content */
+.popup-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px; /* Lebih membulat */
+    text-align: center;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.3); /* Shadow lebih dalam */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth scaling and opacity transition */
+    transform: scale(0.8); /* Scale down for transition effect */
+    opacity: 0; /* Awalnya transparan */
+}
+
+/* Class to show popup content */
+.popup-overlay.show .popup-content {
+    transform: scale(1); /* Normal size */
+    opacity: 1; /* Fully visible */
+}
+
+/* Style judul popup */
+.popup-content h2 {
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    color: #333; /* Warna teks judul */
+}
+
+/* Tombol dengan gradien */
+.popup-content button {
+    width: 100%; /* Lebar penuh agar terlihat seperti blok */
+    margin: 5px 0; /* Spasi antar tombol */
+    padding: 12px 0;
+    font-size: 1.1em;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15); /* Bayangan halus */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Tombol dengan gradien yang disesuaikan */
+.popup-content button:not(.close-btn) {
+    background: linear-gradient(135deg, #21958b 0%, #00625a 100%); /* Gradasi hijau */
+}
+
+/* Hover state untuk tombol dengan gradien */
+.popup-content button:not(.close-btn):hover {
+    background: linear-gradient(135deg, #00625a 0%, #21958b 100%); /* Membalik gradasi saat hover */
+    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.2); /* Tambah bayangan saat hover */
+}
+
+/* Tombol "Tutup" berwarna merah */
+.popup-content .close-btn {
+    background-color: #ff4d4d; /* Warna merah */
+}
+
+/* Hover state untuk tombol "Tutup" */
+.popup-content .close-btn:hover {
+    background-color: #cc0000; /* Warna merah lebih gelap saat hover */
+    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.2); /* Tambah bayangan saat hover */
+}
+
       </style>
 </head>
     <body> 
@@ -588,5 +699,61 @@ document.querySelector('.search-box').addEventListener('submit', function(event)
       getData(SPREADSHEET_ID_2, RANGE_2, 'dataTable2');
     </script>
     
-  </body>
+<!-- Tombol untuk memunculkan popup -->
+<button class="floating-btn" onclick="showPopup()">
+  <img src="../../GAMBAR/upload.png" alt="Upload" class="upload-icon"> <!-- Pastikan path gambar benar -->
+</button>
+
+<!-- Popup Structure -->
+<div id="popup" class="popup-overlay">
+  <div class="popup-content">
+      <h2>SIMPAN FOTO</h2>
+      <button onclick="option1()">TEGUH S</button>
+      <button onclick="option2()">FALIKA</button>
+      <button onclick="closePopup()" class="close-btn">Tutup</button>
+  </div>
+</div>
+
+<!-- JavaScript to control popup -->
+<script>
+  function showPopup() {
+      document.getElementById('popup').style.display = 'flex'; // Show popup
+      setTimeout(() => {
+          document.getElementById('popup').classList.add('show'); // Add show class for transition
+      }, 10); // Delay to ensure the display style is set before transition
+  }
+
+  function closePopup() {
+      document.getElementById('popup').classList.remove('show'); // Remove show class for transition
+      setTimeout(() => {
+          document.getElementById('popup').style.display = 'none'; // Hide popup after transition
+      }, 300); // Match the duration of the CSS transition
+  }
+
+  function option1() {
+      window.location.href = "https://www.example1.com"; // Redirect to URL for Option 1
+  }
+
+  function option2() {
+      window.location.href = "https://script.google.com/macros/s/AKfycbx-WIrXb6H8IMl_ME7jBRV_olcEItEHe8hE8J1tMQSliyh74WufSuTlPHcoGS_cSVcP/exec"; // Redirect to URL for Option 2
+  }
+
+  function option3() {
+      window.location.href = "https://www.example3.com"; // Redirect to URL for Option 3
+  }
+
+  function option4() {
+      window.location.href = "https://www.example4.com"; // Redirect to URL for Option 4
+  }
+
+  function option5() {
+      window.location.href = "https://www.example5.com"; // Redirect to URL for Option 5
+  }
+
+  function option6() {
+      window.location.href = "https://www.example6.com"; // Redirect to URL for Option 6
+  }
+</script>
+
+</body>
   </html>
