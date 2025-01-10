@@ -66,6 +66,7 @@ padding:1px;
     align-items: center;
     z-index: 1000;
     box-sizing: border-box;
+    
 }
 .pencarian input[type="text"] {
     flex: 1; /* Input akan mengambil ruang yang tersisa */
@@ -75,23 +76,29 @@ padding:1px;
     border-radius: 4px;
     font-size: 16px;
     box-sizing: border-box;
-    height: 30px;
+    height: 40px;
+    font-family: 'Scheherazade New', serif;
+
 }
 .pencarian button {
-    height: 30px;
-    padding: 8px 16px;
+    height: 40px;
+    padding: 0 16px; /* Pastikan hanya padding kiri dan kanan */
     margin: 0 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: #ffffff;
     color: #ccc;
     font-size: 16px;
+    line-height: 0px; /* Sama dengan tinggi tombol untuk meratakan teks secara vertikal */
+    text-align: center; /* Meratakan teks secara horizontal */
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
     box-sizing: border-box;
+    font-family: 'Scheherazade New', serif;
 }
+
 .pencarian button:hover {
-    background-color: #3080f7;
+    background-color: rgb(179, 179, 179);
     color: #ffffff;
 }
 
